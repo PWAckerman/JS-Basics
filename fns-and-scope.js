@@ -6,7 +6,13 @@ var name = 'Tyler';
 //If the argument you passed in is equal to 'Tyler', return true. If it's not, return false.
 
   //Code Here
-
+function isTyler(name){
+	if(name === 'Tyler'){
+		return true;
+	} else {
+		return false;
+	}
+}
 
 //Next problem
 
@@ -16,6 +22,12 @@ var name = 'Tyler';
 
 
   //Code Here
+
+function getName(){
+	var name = prompt(name);
+		return name;
+	}
+}
 
 
 //Next Problem
@@ -27,6 +39,10 @@ var name = 'Tyler';
 
   //Code Here
 
+function welcome(){
+	return "Welcome " + getName();
+}
+
 
 //Next problem
 
@@ -36,7 +52,8 @@ var name = 'Tyler';
 //What is the difference between arguments and parameters?
 
   //Answer Here
-
+	Parameters are set when the function is defined, they represent how the arguments will be handled when the function is actually invoked. Arguments take the place of
+parameters when the code is invoked, and are the actual values, objects, and variables that the function is acting upon.
 
 //Next problem
 
@@ -47,7 +64,15 @@ var name = 'Tyler';
 
   //Answer Here
 
+Falsy values evaluate to false when coerced. Checking if a value is falsy can be accomplished by comparing the value to false by using the coercive operator.
 
+Falsy values are:
+false
+0
+''
+null
+undefined
+Nan
 
 //Next Problem
 
@@ -57,13 +82,19 @@ var name = 'Tyler';
 
   //Code Here
 
+function myName(){
+	return 'Patrick';
+}
+
 //Now save the function definition of myName into a new variable called newMyName
 
   //Code Here
 
+var newMyName = myName;
+
 //Now alert the result of invoking newMyName
 
-
+alert(newMyName());
 
 //Next problem
 
@@ -73,8 +104,18 @@ var name = 'Tyler';
 
   //Code Here
 
+function outerFn(name){
+	return function(){
+		return myName();
+}
+}
+
 //Now save the result of invoking outerFn into a variable called innerFn.
+
+var innerFn = outerFn();
 
   //Code Here
 
 //Now invoke innerFn.
+
+innerFn();

@@ -11,11 +11,13 @@ var outer = function(){
 
   //Code Here
 
+var inner = outer();
+
 //Once you do that, invoke inner.
 
   //Code Here
 
-
+inner();
 
 //Next problem
 
@@ -34,7 +36,8 @@ var callFriend = function(){
 
   //Code Here
 
-
+var callJake = callFriend();
+callJake('435-215-9248');
 
 //Next Problem
 
@@ -45,11 +48,19 @@ var callFriend = function(){
 */
 
   //Code Here
+  function makeCounter(){
+     var x = 1;
+     return function(){
+       return x++;
+     };
+    }
+
   var count = makeCounter();
   count() // 1
   count() // 2
   count() // 3
   count() // 4
+
 
 
 
@@ -63,6 +74,15 @@ var callFriend = function(){
 
   //Code Here
 
+  function dev(){ console.log('Mountain');}
+
+  function second(fn){
+    return function(){
+      fn();
+    }();
+  }
+
+second(dev);
 
 
 //Next Problem
@@ -70,9 +90,18 @@ var callFriend = function(){
 
 
 /*
-  Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter will be an anonymous function and the second parameter, 'N', will be a number. Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been invoked 'N' number of times, return 'STOP'.
+  Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters.
+  The first parameter will be an anonymous function and the second parameter, 'N', will be a number.
+  Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been
+  invoked 'N' number of times, return 'STOP'.
 */
 
+function fnCounter(fn, N){
+  for(var i = 0; i < N; i++){
+    fn();
+  }
+  return 'STOP';
+}
 
 
 //Next Problem
@@ -93,19 +122,43 @@ var callFriend = function(){
     //Answer Here
 
 
+We are delaying the console.logs based on the value of the i incrementer. The first log will be delayed 1000 ms, the next 2000 ms, etcetera.
+However, the i variable will be fully incremented by the time the timeouts finished. So every log would eventually complete, but the i will be 5 (the value at the time of calling);
+
   Now, run the function in your console and note what happpens.
 
   Was your answer right or wrong?
 
     //Answer Here
-
+ The general idea was right, however I didn't account for the final increment above 5 to 6 (the console.log return 6)
 
   Fix the counter function so that it works the way you expect it to work. (logging 1 then 2 then 3, etc)
-*/
 
-    //Code Here
+    //Code Here*/
 
+//ES6
+function counter(){
+  'use strict'; //So it works in chrome console, can alternately run in ES6/Babel mode of JSBin
+      for (var i=1; i<=5; i++) {
+        //we make a loop, which iterated 5 times
+        let x = i; //ES6 specific syntax sets the x to equal i for this block-scoped iteration
+        setTimeout( ( () => console.log( x)), i*1000 );//ES6 arrow function for anonymous function callback
+      }
+}
 
+//ES5
+function counter() {
+    function _loop () { //declare the _loop function, which will be called later inside a 'for' loop
+    var x = i; //Set var x equal to i (i will not exist until this function is called). This puts a separate x variable in each _loop calls scope.
+    setTimeout(function () {
+      console.log(x); //standard functionality
+    }, i * 1000);
+  };
+
+  for (var i = 1; i <= 5; i++) {
+    _loop(); //loop is invoked at each value of i, and the console logs x after the timeout.
+  }
+};
 
 //Next Problem
 
@@ -124,4 +177,16 @@ var callFriend = function(){
   *Hint: Don't let this fool you. Break down what's really happening here.
 */
 
-
+function arrayCount(n){
+  funcArray = [];
+  for(var i = 0; i < n; i++){
+    funcArray.push(
+      function(j){
+        return function(){
+          return j;
+        }
+      }(i)
+    )
+  }
+  return funcArray;
+}
