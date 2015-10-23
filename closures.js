@@ -182,9 +182,9 @@ function arrayCount(n){
   for(var i = 0; i < n; i++){
     funcArray.push(
       function(j){
-        return function(){
-          return j;
-        }
+        // return function(){
+        //   return j;
+        // }
       }(i)
     )
   }

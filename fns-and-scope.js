@@ -27,7 +27,6 @@ function getName(){
 	var name = prompt(name);
 		return name;
 	}
-}
 
 
 //Next Problem
