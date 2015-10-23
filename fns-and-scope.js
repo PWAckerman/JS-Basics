@@ -52,7 +52,7 @@ function welcome(){
 //What is the difference between arguments and parameters?
 
   //Answer Here
-	Parameters are set when the function is defined, they represent how the arguments will be handled when the function is actually invoked. Arguments take the place of
+/*	Parameters are set when the function is defined, they represent how the arguments will be handled when the function is actually invoked. Arguments take the place of
 parameters when the code is invoked, and are the actual values, objects, and variables that the function is acting upon.
 
 //Next problem
@@ -64,8 +64,8 @@ parameters when the code is invoked, and are the actual values, objects, and var
 
   //Answer Here
 
-Falsy values evaluate to false when coerced. Checking if a value is falsy can be accomplished by comparing the value to false by using the coercive operator.
-
+Falsy values evaluate to false in an if() expression. Checking if a value is falsy can be accomplished by checking the value within
+an if() expression that evaluates the truthiness of the value. If the value is not truthy, it is falsy.
 Falsy values are:
 false
 0
@@ -80,7 +80,7 @@ Nan
 
 //Create a function called myName that returns your name
 
-  //Code Here
+  //Code Here*/
 
 function myName(){
 	return 'Patrick';
@@ -107,7 +107,7 @@ alert(newMyName());
 function outerFn(name){
 	return function(){
 		return myName();
-}
+	}
 }
 
 //Now save the result of invoking outerFn into a variable called innerFn.
