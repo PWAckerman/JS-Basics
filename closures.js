@@ -96,13 +96,19 @@ second(dev);
   invoked 'N' number of times, return 'STOP'.
 */
 
-function fnCounter(fn, N){
-  for(var i = 0; i < N; i++){
-    fn();
-  }
-  return 'STOP';
-}
-
+function fnCounter(fn, n){
+return (function (fn, n) {
+    var counter = 0;
+    var N = n;
+    return function () {
+      if(counter < N){
+      counter += 1
+      return fn() ;
+    } else {
+      return 'STOP'
+    }
+}})(fn, n)
+};
 
 //Next Problem
 
@@ -149,7 +155,7 @@ function counter(){
 //ES5
 function counter() {
     function _loop () { //declare the _loop function, which will be called later inside a 'for' loop
-    var x = i; //Set var x equal to i (i will not have a value until this function is called). This puts a separate x variable in each _loop calls scope.
+    var x = i; //Set var x equal to i (i will not have a valueb vgtb678bregt4cxz13` until this function is called). This puts a separate x variable in each _loop calls scope.
     setTimeout(function () {
       console.log(x); //standard functionality
     }, i * 1000);
